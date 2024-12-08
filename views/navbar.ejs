@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body,
+      ul,
+      li,
+      a {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+      }
+
+      body {
+        background-color: #f4f4f4;
+      }
+
+      nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #2b1939;
+        color: #fff;
+        padding: 10px 20px;
+      }
+
+      .left {
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      .right ul {
+        list-style: none;
+        display: flex;
+        gap: 15px;
+      }
+
+      .right li {
+        display: inline;
+      }
+
+      .right a {
+        color: #fff;
+        text-decoration: none;
+        font-size: 16px;
+        transition: color 0.3s;
+      }
+
+      .right a:hover {
+        color: #ffd700;
+      }
+    </style>
+  </head>
+  <body>
+    <nav>
+      <div class="left">
+        <a>Navbar</a>
+      </div>
+      <div class="right">
+        <ul>
+          <% if (user && user.username) { %>
+          <li><a href="#">Welcome, <%= user.username %></a></li>
+          <li><a href="/artical/list">All Article</a></li>
+          <% if (user && user.role === 'admin') { %>
+          <li><a href="/artical/create">Create Recipe</a></li>
+          <% } %>
+
+          <li><a href="/user/logout">Logout</a></li>
+          <% } else { %>
+          <li><a href="/user/register">Register</a></li>
+          <li><a href="/user/login">Login</a></li>
+          <% } %>
+        </ul>
+      </div>
+    </nav>
+  </body>
+</html>

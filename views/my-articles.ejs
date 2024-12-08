@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Article</title>
+    <style>
+      /* Your existing styles */
+    </style>
+  </head>
+  <body>
+    <%- include("navbar") %>
+    <div class="container">
+      <h1>My Articles</h1>
+      <% if (articles.length > 0) { %>
+      <table>
+        <thead>
+          <tr>
+            <th>Author Name</th>
+            <th>Description</th>
+            <% if (user && user.role === 'admin') { %>
+            <th>Actions</th>
+            <% } %>
+          </tr>
+        </thead>
+        <tbody>
+          <% articles.forEach(article => { %>
+          <tr>
+            <td><%= article.Authername %></td>
+            <td><%= article.Desc %></td>
+            <% if (user && user.role === 'admin') { %>
+            <td class="actions">
+              <a
+                href="/article/<%= article._id %>/edit"
+                style="
+                  padding: 4px 8px;
+                  background-color: #28a745;
+                  color: #fff;
+                  text-decoration: none;
+                  border-radius: 4px;
+                "
+                >Edit</a
+              >
+              <form
+                action="/article/<%= article._id %>/delete"
+                method="POST"
+                style="display: inline"
+              >
+                <button
+                  type="submit"
+                  style="
+                    padding: 4px 8px;
+                    background-color: #dc3545;
+                    color: #fff;
+                    border: none;
+                    border-radius: 4px;
+                    cursor: pointer;
+                  "
+                >
+                  Delete
+                </button>
+              </form>
+            </td>
+            <% } %>
+          </tr>
+          <% }) %>
+        </tbody>
+      </table>
+      <% } else { %>
+      <p>No articles found.</p>
+      <% } %>
+    </div>
+  </body>
+  
+ 
+</html>

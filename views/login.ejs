@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <style>
+      .container {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+
+      .container #loginForm {
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 400px;
+        margin-top: 50px;
+      }
+
+      h1 {
+        margin-bottom: 20px;
+        font-size: 28px;
+        color: #2b1939;
+        text-align: center;
+        font-weight: 700;
+      }
+
+      .form-group label {
+        font-weight: 600;
+        color: #495057;
+      }
+
+      .btn {
+        background-color: #2b1939;
+        color: #fff;
+        padding: 12px;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+      }
+
+      .btn:hover {
+        background-color: #2b1939;
+      }
+
+      .form-control:focus {
+        border-color: #2b1939;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.25);
+      }
+    </style>
+  </head>
+  <body>
+    <%- include("navbar", { user: user || {} }) %>
+    <div class="container">
+      <form action="/user/signin" method="POST" id="loginForm">
+        <h1>Login</h1>
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            name="username"
+            class="form-control"
+            placeholder="Enter your username"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            class="form-control"
+            placeholder="Enter your password"
+            required
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+      </form>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
+</html>
